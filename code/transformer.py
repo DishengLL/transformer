@@ -319,6 +319,7 @@ def make_model(
         Generator(d_model, tgt_vocab),
     )
 
+
     # This was important from their code.
     # Initialize parameters with Glorot / fan_avg.
     for p in model.parameters():
