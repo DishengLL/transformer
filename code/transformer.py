@@ -223,8 +223,10 @@ class MultiHeadedAttention(nn.Module):
         # We assume d_v always equals d_k
         self.d_k = d_model // h
         self.h = h
+        ## nn.linear(input_dim, output_dim) 一个输入维度为input dim的输出 通过全联接，输出一个维度为ouputdim的output
         self.linears = clones(nn.Linear(d_model, d_model), 4)
         self.attn = None
+        ## 以 dropout为概率随机将数据置为0；
         self.dropout = nn.Dropout(p=dropout)
 
     def forward(self, query, key, value, mask=None):
