@@ -345,6 +345,8 @@ def inference_test():
         out = test_model.decode(
             memory, src_mask, ys, subsequent_mask(ys.size(1)).type_as(src.data)
         )
+
+        print(subsequent_mask(ys.size(1)).type_as(src.data))
         prob = test_model.generator(out[:, -1])
         value, next_word = torch.max(prob, dim=1)
         next_word = next_word.data[0]
@@ -352,7 +354,7 @@ def inference_test():
         ys = torch.cat(
             [ys, torch.empty(1, 1).type_as(src.data).fill_(next_word)], dim=1
         )
-        print(ys)
+        # print(ys)
 
     print("Example Untrained Model Prediction:", ys)
 
