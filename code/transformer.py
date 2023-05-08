@@ -364,4 +364,5 @@ def run_tests():
         inference_test()
 
 
-show_example(run_tests)
+if __name__ == "__main__":
+    show_example(run_tests)
